@@ -42,8 +42,8 @@
 
                                         <a href="{{ route('users.edit', ['id' => $rs->id]) }}" style="margin-right: 10px;"
                                             class="btn btn-warning">Edit</a>
-                                        <form action="{{ route('events.destroy', $rs->id) }}" style="margin-right: 10px;"
-                                            method="POST" onsubmit="return confirm('Delete?')" class="btn btn-danger p-0">
+                                        <form action="{{ route('users.destroy', $rs->id) }}" style="margin-right: 10px;"
+                                            method="POST" onsubmit="return confirm('Delete User {{ $rs->name }}?')" class="btn btn-danger p-0">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger m-0">Delete</button>
