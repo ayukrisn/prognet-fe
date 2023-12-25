@@ -1,0 +1,421 @@
+/* PARAGRAPH ETC */
+* {
+    box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+}
+h1 {
+  font-size: 4rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.2rem
+}
+
+h7 {
+  font-size: 1rem
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color:rgb(138, 205, 215)
+}
+
+a:hover {
+  color: rgb(81, 120, 126);
+}
+
+.link {
+  color: rgb(138, 205, 215);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.link:hover {
+  color: rgb(81, 120, 126);
+}
+
+
+.bi {
+  color: rgb(138, 205, 215);
+}
+
+/* NAVIGATION BAR */
+.navbar {
+  background-color: #fff;
+  height: 80px;
+  margin: 20px;
+  border-radius: 30px;
+  padding: 0.5rem;
+
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: rgb(255, 144, 188);
+  font-size: 24px;
+  transition: 0.3s color;
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus,
+btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link {
+  color: #666777;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #000;
+}
+
+@media (max-width: 992px) {
+    .register-button {
+        color: rgb(138, 205, 215);
+        font-weight: 500;
+        position: relative;
+    }
+
+    .register:hover    {
+        color: #000;
+    }
+}
+@media (min-width: 991px) {
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: rgb(138, 205, 215);
+    visibility: hidden;
+    transform: o.3 ease-in-out;
+  }
+
+  .nav-link:hover::before,
+  .nav-link.nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+  }
+
+  .register-button {
+    background-color: rgb(138, 205, 215);
+    color: #fff;
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+  }
+  
+  .register-button:hover {
+    background-color: rgb(81, 120, 126);
+    color: #fff;
+  }
+}
+
+
+/* HERO SECTION */
+.hero-section {
+  background: url(../images/kecak.jpg) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.hero-section::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hero-section .container {
+  height: 100vh;
+  z-index: 1;
+  position: relative;
+}
+
+/* SEARCH BAR */
+.box {
+  width: 500px;
+  height: 50px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.box > i {
+  font-size: 20px;
+  color: #777;
+}
+
+.box > input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+
+/* CARD */
+.card-img-top{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 12rem;
+    object-fit: cover;
+}
+.card{
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+}
+.card-body{
+    padding: 25px;
+    margin-top: -15px;
+}
+
+.card-footer {
+  background-color: #fff;
+}
+
+.btn-primary{
+    border-radius: 50px;
+    width: 120px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+}
+.btn-primary:hover{
+    background-color: black;
+    border: none;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.card-price {
+    color: rgb(78, 112, 117);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.card-footer {
+  padding-left: 0;
+}
+.organizer-img-icon {
+  height: 3.5rem;
+}
+/* BUTTON */
+.btn-primary {
+    background-color: rgb(138, 205, 215);
+    border: 0;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: rgb(81, 120, 126);
+}
+
+/* CATEGORY */
+.category .card-body {
+  padding: 25px;
+  margin: 0;
+}
+
+.category .card-body:hover {
+  cursor: pointer;
+  color:rgb(81, 120, 126);
+}
+
+
+/* CREATOR */
+.creator img {
+  width: 65%;
+  border-radius: 50%;
+}
+
+.creator .card {
+  padding: 0;
+  border: none;
+}
+
+.creator .card-title {
+  text-align: center;
+}
+
+.creator a {
+  color: #000;
+}
+
+/* EVENT PAGE */
+section.event.hero-section {
+  background: url(../images/festival.jpg) no-repeat center;
+}
+
+/* SIDEBAR FILTER */
+.sidebar-filter {
+  width: 30%;
+  border-right: 2px solid black;
+}
+
+/* DETAIL EVENT */
+.detail-event {
+  padding-top: 8rem;
+}
+
+.detail-event-content-top {
+  padding-bottom: 4rem;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.detail-event-content-top-wrapper {
+  display: grid;
+  grid-template-columns: 1fr .5fr;
+  row-gap: 10px;
+  column-gap: 40px;
+}
+
+.detail-event-banner {
+  grid-column: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.detail-event-banner img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  overflow: hidden;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.detail-event-info .card {
+  height: 100%; 
+}
+
+.detail-event-info .card-body {
+  padding: 25px;
+  margin: 0;
+}
+
+.event-info p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.event-name {
+  margin-bottom: 2rem;
+}
+
+
+/* MAIN EVENT DETAIL */
+.detail-event-content-main {
+  padding-top: 4rem;
+}
+
+.detail-event-content-main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr .5fr;
+  row-gap: 10px;
+  column-gap: 30px;
+}
+
+.detail-title {
+  border-bottom: 4px solid rgb(138, 205, 215);
+  display: inline-block;
+  padding-bottom: 4px;
+  font-weight: bold;
+  margin-bottom: 1.8rem;
+}
+
+.event-explanation {
+  font-size: 1rem;
+}
+
+.detail-event-ticket .card-body {
+  padding: 25px;
+  margin: 0;
+}
+
+.card-footer {
+  padding-right: 0;
+}
+
+.card-footer a.btn {
+  width: 100%;
+}
+
+.detail-event-ticket .card-body .card-title {
+  margin-bottom: 2rem;
+}
+
+.detail-event-ticket .card-body .row {
+  margin-bottom: 0.9rem;
+}
+
+.detail-event-ticket .harga {
+  margin-bottom: 5px;
+}
+
+.event-category .card-body {
+  padding: 25px;
+  margin: 0;
+}
+
+.addictional-event-detail {
+  gap: 30px;
+}
+
+.event-category a{
+  font-weight: 500;
+}
+
+.event-category p{
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.event-share p{
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.event-share .share-icons i {
+  font-size: 32px; /* Adjust as needed */
+}
+
+.event-share .share-icons i {
+  margin-right: 10px; /* Adjust as needed */
+}
