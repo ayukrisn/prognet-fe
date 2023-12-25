@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <hr>
-                        <a href="./profile.html" class="sub-menu-link">
+                        <a href="{{ route('profile', auth()->user()->id) }}" class="sub-menu-link">
                             <i class="bi bi-person-fill"></i>
                             <p>Edit Profile</p>
                             <span>></span>

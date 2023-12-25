@@ -88,8 +88,8 @@ Route::middleware(['auth', 'role:Event'])->group(function () {
 
 Route::middleware(['auth', 'role:User'])->group(function () {
     Route::get('/UserDashboard', [AuthController::class, 'UserDashboard'])->name('UserDashboard');
-    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
-    Route::post('/profile', [AuthController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/profile', [AuthController::class, 'profileUser'])->name('profile');
+    Route::post('/profile', [AuthController::class, 'updateProfileUser'])->name('profile.update');
     Route::get('event/details/{id}', [AuthController::class, 'showUserDetails'])->name('event.details');
 });
 

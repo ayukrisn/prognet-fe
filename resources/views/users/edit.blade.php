@@ -106,7 +106,7 @@
                                     <img id="fotoPreview" class="img-fluid mt-2 rounded-circle" alt="Preview" style="display: none;">
                                     <br>
                                     @if ($user->foto)
-                                        <img src="{{ asset('storage/foto/' . auth()->user()->foto) }}" class="rounded-circle"
+                                        <img src="{{ asset('storage/foto/' . $user->foto) }}" class="rounded-circle"
                                             alt="Profile Picture" style="max-width: 200px; max-height: 300px;">
                                     @endif
                                 </div>

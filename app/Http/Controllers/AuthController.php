@@ -143,7 +143,7 @@ private function redirectToDashboard($user, $allowedRoles)
     }
     public function profileUser()
     {
-        return view('profileUser');
+        return view('profile');
     }
     public function UserDashboard()
     {
@@ -182,7 +182,7 @@ private function redirectToDashboard($user, $allowedRoles)
         User::where('id', auth()->user()->id)->update($dataToUpdate);
         Alert::success('Update Success', 'Congratulation! You have successfully Updated Your Account.');
 
-        return redirect()->route('profileAdmin')->with('success', 'Profile updated successfully!');
+        return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
     public function profileEvent()
     {
@@ -233,5 +233,4 @@ private function redirectToDashboard($user, $allowedRoles)
 
     return view('EventDetails', compact('event'));
     }
-    
 }
