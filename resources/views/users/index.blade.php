@@ -40,7 +40,7 @@
                                         <a href="{{ route('users.show', ['id' => $rs->id]) }}" style="margin-right: 10px;"
                                             class="btn btn-secondary">Detail</a>
 
-                                        <a href="{{ route('events.edit', ['id' => $rs->id]) }}" style="margin-right: 10px;"
+                                        <a href="{{ route('users.edit', ['id' => $rs->id]) }}" style="margin-right: 10px;"
                                             class="btn btn-warning">Edit</a>
                                         <form action="{{ route('events.destroy', $rs->id) }}" style="margin-right: 10px;"
                                             method="POST" onsubmit="return confirm('Delete?')" class="btn btn-danger p-0">
