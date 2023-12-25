@@ -26,7 +26,7 @@
             var startDatePicker = new Pikaday({
                 field: document.getElementById('exampleInputDateStart'),
                 format: 'YYYY-MM-DD',
-                maxDate: new Date(),
+                minDate: new Date(),
                 yearRange: [1900, moment().year()],
                 showYearDropdown: true,
                 placeholder: 'Tanggal Mulai'
@@ -36,7 +36,7 @@
             var endDatePicker = new Pikaday({
                 field: document.getElementById('exampleInputDateEnd'),
                 format: 'YYYY-MM-DD',
-                maxDate: new Date(),
+                minDate: new Date(),
                 yearRange: [1900, moment().year()],
                 showYearDropdown: true,
                 placeholder: 'Tanggal Selesai'
@@ -101,7 +101,7 @@
    
    
         <div class="form-group">
-            <label class="labels">Profile Photo</label>
+            <label class="labels">Event Photo</label>
             <input name="foto" type="file" class="form-control-file" id="fotoInput"
                 onchange="previewImage()">
             <img id="fotoPreview" class="img-fluid mt-2" alt="Preview" style="display: none;">

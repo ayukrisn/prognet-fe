@@ -12,7 +12,7 @@
             var startDatePicker = new Pikaday({
                 field: document.getElementById('exampleInputDateStart'),
                 format: 'YYYY-MM-DD',
-                maxDate: new Date(),
+                minate: new Date(),
                 yearRange: [1900, moment().year()],
                 showYearDropdown: true,
                 placeholder: 'Tanggal Mulai'
@@ -20,7 +20,7 @@
             var endDatePicker = new Pikaday({
                 field: document.getElementById('exampleInputDateEnd'),
                 format: 'YYYY-MM-DD',
-                maxDate: new Date(),
+                minDate: new Date(),
                 yearRange: [1900, moment().year()],
                 showYearDropdown: true,
                 placeholder: 'Tanggal Selesai'

@@ -51,9 +51,6 @@
                             <input type="text" name="role" class="form-control" placeholder="Role"
                                 value="{{ auth()->user()->role }}" readonly>
                         </div>
-                    </div>
-
-                    <div class="row mt-2">
                         <div class="col-md-6">
                             <label class="labels">Gender</label>
                             <select name="gender" class="form-control">
@@ -73,41 +70,45 @@
                             <input type="text" name="identify_number" class="form-control" placeholder="Identify Number"
                                 value="{{ auth()->user()->identify_number }}">
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labels">Profile Photo</label>
+                                <input name="foto" type="file" class="form-control-file" id="fotoInput"
+                                    onchange="previewImage()">
+                                <div class="d-flex">
+                                    <img id="fotoPreview" class="img-fluid mt-2 rounded-circle" alt="Preview"
+                                        style="display: none;">
+                                    <br>
+                                    @if (auth()->user()->foto)
+                                        <img src="{{ asset('storage/foto/' . auth()->user()->foto) }}" class="rounded-circle"
+                                            alt="Profile Picture" style="max-width: 200px; max-height: 200px;">
+                                        @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="labels">Profile Photo</label>
-                        <input name="foto" type="file" class="form-control-file" id="fotoInput"
-                            onchange="previewImage()">
-                        <img id="fotoPreview" class="img-fluid mt-2" alt="Preview" style="display: none;">
-                    </div>
-                    <script>
-                        function previewImage() {
-                            const input = document.getElementById('fotoInput');
-                            const preview = document.getElementById('fotoPreview');
-                
-                            if (input.files && input.files[0]) {
-                                const reader = new FileReader();
-                
-                                reader.onload = function(e) {
-                                    preview.src = e.target.result;
-                                    preview.style.display = 'block';
-                                };
-                
-                                reader.readAsDataURL(input.files[0]);
-                            }
-                        }
-                    </script>
-                
-                    @if (auth()->user()->foto)
-                        <img src="{{ asset('storage/foto/' . auth()->user()->foto) }}" alt="Profile Picture"
-                            style="max-width: 200px; max-height: 300px;">
-                    @endif
-                    
                     <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button"
                             type="submit">Save Profile</button></div>
                 </div>
             </div>
         </div>
     </form>
+    <script>
+        function previewImage() {
+            const input = document.getElementById('fotoInput');
+            const preview = document.getElementById('fotoPreview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style = 'display=block; max-width: 200px; max-height: 300px;';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
    
 @endsection

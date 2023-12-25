@@ -123,7 +123,7 @@
 
                                 reader.onload = function(e) {
                                     preview.src = e.target.result;
-                                    preview.style = 'display=block; max-width: 200px; max-height: 300px;';
+                                    preview.style = 'display=block; max-width: 200px; max-height: 200px;';
                                 };
 
                                 reader.readAsDataURL(input.files[0]);

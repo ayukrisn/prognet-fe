@@ -63,13 +63,13 @@ Route::prefix('events')->group(function () {
 });
 
 Route::prefix('kategori')->group(function () {
-    Route::get('kategori', [KategoriController::class, 'index'])->name('kategori.index');
-    Route::get('create', [KategoriController::class, 'create'])->name('kategori.create');
-    Route::post('store', [KategoriController::class, 'store'])->name('kategori.store');
-    Route::get('show/{id}', [KategoriController::class, 'show'])->name('kategori.show');
-    Route::get('edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
-    Route::put('update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
-    Route::delete('destroy/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+    Route::get('kategori', [KategoriController::class, 'index'])->name('kategori.index')->middleware(['auth', 'role:Admin']);
+    Route::get('create', [KategoriController::class, 'create'])->name('kategori.create')->middleware(['auth', 'role:Admin']);
+    Route::post('store', [KategoriController::class, 'store'])->name('kategori.store')->middleware(['auth', 'role:Admin']);
+    Route::get('show/{id}', [KategoriController::class, 'show'])->name('kategori.show')->middleware(['auth', 'role:Admin']);
+    Route::get('edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit')->middleware(['auth', 'role:Admin']);
+    Route::put('update/{id}', [KategoriController::class, 'update'])->name('kategori.update')->middleware(['auth', 'role:Admin']);
+    Route::delete('destroy/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy')->middleware(['auth', 'role:Admin']);
 });
 
 

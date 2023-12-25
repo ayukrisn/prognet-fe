@@ -23,8 +23,6 @@
                         <div class="row" id="res"></div>
                         <div class="form-group">
                             <label class="labels">Profile Photo</label>
-                            <input name="foto" type="file" class="form-control-file" id="fotoInput"
-                                onchange="previewImage()">
                                 <div class="d-flex">
                                     @if (auth()->user()->foto)
                             <img src="{{ asset('storage/foto/' . auth()->user()->foto) }}" alt="Profile Picture"
@@ -36,6 +34,8 @@
                         <br>
                         <img id="fotoPreview" class="img-fluid mt-2 rounded-circle" alt="Preview" style="display: none;" >
                                 </div>
+                                <input name="foto" type="file" class="form-control-file" id="fotoInput"
+                                onchange="previewImage()">
                             
                         </div>
                         <div class="row mt-2">
@@ -83,10 +83,6 @@
                                     placeholder="Identify Number" value="{{ auth()->user()->identify_number }}">
                             </div>
                         </div>
-                        
-                        
-
-
                         <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button"
                                 type="submit">Save Profile</button></div>
                     </div>

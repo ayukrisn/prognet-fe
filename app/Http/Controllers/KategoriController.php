@@ -14,13 +14,13 @@ class KategoriController extends Controller
         $user = Auth::user();
 
         // Pengecekan apakah pengguna telah login
-        if ($user) {
+        if ($user->role === "Admin") {
             $kategori = Category::all();
 
             return view('kategori.index', compact('kategori'));
         } else {
             // Logika ketika pengguna tidak terotentikasi
-            return redirect()->route('AdminDashboard')->with('error', 'You need to login to view events.');
+            return redirect()->route($user->role . 'Dashboard')->with('error', 'You need to login as Admin to manage category.');
         }
     }
     public function create()
@@ -83,11 +83,6 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index')->with('error', 'Error updating event');
     }
 }
-
-    
-
-
-  
 
 public function destroy($id)
 {

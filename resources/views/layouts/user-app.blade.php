@@ -36,7 +36,7 @@
       <p class="navbar-brand me-auto text-muted">&copy; 2023 Festifind</p>
   
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2">Home</a></li>
+        <li class="nav-item"><a href="/UserDashboard" class="nav-link px-2 {{ Request::is('UserDashboard') ? 'active' : '' }}">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2">Event</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2">Ticket</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2">Event Creator</a></li>
