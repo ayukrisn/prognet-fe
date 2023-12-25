@@ -23,9 +23,9 @@
     <!-- Nav Item - Dashboard Admin -->
     @if (auth()->user()->role == 'Admin')
     <li class="nav-item">
-        <a class="nav-link" href="/profileAdmin">
+        <a class="nav-link" href="/users">
             <i class="fa-solid fa-user"></i>
-            <span>Profile</span></a>
+            <span>Users</span></a>
     </li>
     
     <li class="nav-item">

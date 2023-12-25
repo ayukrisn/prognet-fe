@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\KategoriController;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,10 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 });
 
 Route::prefix('users')->group(function () {
-    
+    Route::get('', [UserController::class, 'index'])->name('users.index');
+    Route::get('create', [UserController::class, 'create'])->name('users.create');
+    Route::post('store', [UserController::class, 'store'])->name('users.store');
+    Route::get('show/{id}', [UserController::class, 'show'])->name('users.show');
 });
 
 Route::prefix('events')->group(function () {
