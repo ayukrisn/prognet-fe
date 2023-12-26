@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.5",
         "realrashid/sweet-alert": "^7.1",
         "spatie/laravel-permission": "^6.2",
+        "stripe/stripe-php": "^13.7",
         "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {

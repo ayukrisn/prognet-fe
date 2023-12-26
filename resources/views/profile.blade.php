@@ -5,15 +5,6 @@
     <section class="edit-profile" style="padding-right: 5rem; padding-left: 5rem;">
         <form method="POST" enctype="multipart/form-data" id="profile_setup_frm" action="{{ route('profile.update') }}">
             @csrf
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div class="row">
                 <div class="col-md-12 border-right">
                     <div class="p-3 py-5" style="margin-top: 60px;">
@@ -26,9 +17,6 @@
                                 <div class="d-flex">
                                     @if (auth()->user()->foto)
                             <img src="{{ asset('storage/foto/' . auth()->user()->foto) }}" alt="Profile Picture"
-                                style="max-width: 200px; max-height: 200px;" class="rounded-circle">
-                        @else
-                            <img src="{{ asset('storage/foto/') }}" alt="Default Profile Picture"
                                 style="max-width: 200px; max-height: 200px;" class="rounded-circle">
                         @endif
                         <br>
@@ -83,6 +71,15 @@
                                     placeholder="Identify Number" value="{{ auth()->user()->identify_number }}">
                             </div>
                         </div>
+                        @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                         <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button"
                                 type="submit">Save Profile</button></div>
                     </div>

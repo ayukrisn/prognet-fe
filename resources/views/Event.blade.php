@@ -2,7 +2,7 @@
 @section('title', 'Prognet | Home')
 @section('contents')
 
-    <!-- Event Section 1 -->
+<!-- Event Section 1 -->
 <section class="event-section">
     <div class="container py-5">
         <div class="section-title">

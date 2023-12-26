@@ -7,6 +7,10 @@ use App\Models\Payment;
 use App\Models\Event;
 use Illuminate\Support\Facades\Log;
 
+// PaymentController.php
+
+use App\Http\Controllers\StripeController;
+
 class PaymentController extends Controller
 {
     public function beliTiket(Request $request, $eventId)
@@ -27,7 +31,7 @@ class PaymentController extends Controller
 
         // Simpan pembelian tiket ke dalam tabel payments
         $payment = new Payment([
-            'user_id' => auth()->id(), // Ambil ID pengguna yang sedang login
+            'user_id' => auth()->id(),
             'event_id' => $eventId,
             'quantity' => $request->input('quantity'),
             'total_harga' => $totalHarga,
@@ -35,7 +39,7 @@ class PaymentController extends Controller
 
         $payment->save();
 
-        // Response atau redirect sesuai kebutuhan Anda
-        return view('UserDashboard');
+        // Panggil fungsi untuk membuat sesi Stripe dari StripeController
+        return app(StripeController::class)->createCheckoutSession($payment->id);
     }
 }

@@ -30,7 +30,7 @@ class AuthController extends Controller
             'phone_num' => 'required|numeric|unique:users',
             'birthdate' => 'required|date',
             'gender' => 'required',
-            'identify_number' => 'numeric|unique:users',
+            'identify_number' => 'nullable|numeric|unique:users',
             'role' => 'required',
             
 
@@ -118,7 +118,7 @@ private function redirectToDashboard($user, $allowedRoles)
             'email' => 'required|email|unique:users,email,' . auth()->user()->id,
             'phone_num' => 'required|numeric',
             'birthdate' => 'required|date',
-            'identify_number' => 'required|numeric',
+            'identify_number' => 'nullable|numeric|unique:users',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ])->validate();
         $dataToUpdate = [
@@ -161,7 +161,7 @@ private function redirectToDashboard($user, $allowedRoles)
             'email' => 'required|email|unique:users,email,' . auth()->user()->id,
             'phone_num' => 'required|numeric',
             'birthdate' => 'required|date',
-            'identify_number' => 'required',
+            'identify_number' => 'nullable|numeric|unique:users',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ])->validate();
         $dataToUpdate = [
@@ -199,7 +199,7 @@ private function redirectToDashboard($user, $allowedRoles)
             'email' => 'required|email|unique:users,email,' . auth()->user()->id,
             'phone_num' => 'required|numeric',
             'birthdate' => 'required|date',
-            'identify_number' => 'required',
+            'identify_number' => 'unique:users|numeric|required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ])->validate();
         $dataToUpdate = [

@@ -7,8 +7,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PaymentController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -21,27 +21,26 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-
+Route::get('', function () {
+    return view('auth/login');
+});
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('register', 'register')->name('register');
     Route::post('register', 'registerSave')->name('register.save');
-  
+
     Route::get('login', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
     Route::get('about', 'about')->name('about');
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
-
 });
 
 // routes/web.php
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    Route::get('/AdminDashboard', [AdminController::class, 'Admin'])->name('AdminDashboard');   
+    Route::get('/AdminDashboard', [AdminController::class, 'Admin'])->name('AdminDashboard');
     Route::get('/profileAdmin', [AuthController::class, 'profileAdmin'])->name('profileAdmin');
     Route::post('/profileAdmin', [AuthController::class, 'updateProfileAdmin'])->name('profileAdmin.update');
-    
-  
 });
 
 Route::prefix('users')->group(function () {
@@ -85,7 +84,6 @@ Route::middleware(['auth', 'role:Event'])->group(function () {
     Route::get('/EventDashboard', [AuthController::class, 'EventDashboard'])->name('EventDashboard');
     Route::get('/profileEvent', [AuthController::class, 'profileEvent'])->name('profileEvent');
     Route::post('/profileEvent', [AuthController::class, 'updateProfileEvent'])->name('profileEvent.update');
-   
 });
 
 Route::middleware(['auth', 'role:User'])->group(function () {
@@ -94,9 +92,18 @@ Route::middleware(['auth', 'role:User'])->group(function () {
     Route::post('/profile', [AuthController::class, 'updateProfileUser'])->name('profile.update');
     Route::get('event/details/{id}', [AuthController::class, 'showUserDetails'])->name('event.details');
     Route::get('/EventOrganizer', [AuthController::class, 'showEventOrganizer'])->name('event.organizer');
+    Route::get('event/payment/{id}', [AuthController::class, 'showEventPayment'])->name('event.payment');
     Route::get('/Event', [AuthController::class, 'showAllEvent'])->name('event.all');
+    Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
+    Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+    Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+    // Route::post('/beli-tiket/{eventId}', 'PaymentController@beliTiket')->name('beli-tiket');
+    Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
 });
 
 Route::controller(PaymentController::class)->group(function () {
     Route::post('/beli-tiket/{eventId}', 'beliTiket')->name('beli-tiket');
 });
+
+Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');

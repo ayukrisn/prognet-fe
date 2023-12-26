@@ -31,7 +31,8 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image" style="background: url({{ asset('storage/foto/register-page.jpg') }}); background-position: center;
+                    background-size: cover"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -125,7 +126,7 @@
                                 <label class="labels">Identity Number</label>
                                     <input name="identify_number" type="text"
                                         class="form-control form-control-user @error('identify_number')is-invalid @enderror"
-                                        id="identityNumber" placeholder="Identiy Number">
+                                        id="identityNumber" placeholder="Identiy Number" required>
                                     @error('identify_number')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
