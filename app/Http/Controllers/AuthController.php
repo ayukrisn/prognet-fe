@@ -24,13 +24,13 @@ class AuthController extends Controller
     public function registerSave(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|alpha',
             'email' => 'required|email',
             'password' => 'required|confirmed',
-            'phone_num' => 'required|unique:users',
+            'phone_num' => 'required|numeric|unique:users',
             'birthdate' => 'required|date',
             'gender' => 'required',
-            'identify_number' => 'required|unique:users',
+            'identify_number' => 'numeric|unique:users',
             'role' => 'required',
             
 
@@ -114,11 +114,11 @@ private function redirectToDashboard($user, $allowedRoles)
     public function updateProfileAdmin(Request $request)
     {
         Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|alpha',
             'email' => 'required|email|unique:users,email,' . auth()->user()->id,
-            'phone_num' => 'required',
+            'phone_num' => 'required|numeric',
             'birthdate' => 'required|date',
-            'identify_number' => 'required',
+            'identify_number' => 'required|numeric',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ])->validate();
         $dataToUpdate = [
@@ -159,7 +159,7 @@ private function redirectToDashboard($user, $allowedRoles)
         Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . auth()->user()->id,
-            'phone_num' => 'required',
+            'phone_num' => 'required|numeric',
             'birthdate' => 'required|date',
             'identify_number' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -197,7 +197,7 @@ private function redirectToDashboard($user, $allowedRoles)
         Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . auth()->user()->id,
-            'phone_num' => 'required',
+            'phone_num' => 'required|numeric',
             'birthdate' => 'required|date',
             'identify_number' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -228,9 +228,26 @@ private function redirectToDashboard($user, $allowedRoles)
     $event = Event::findOrFail($id);
 
     if (Auth::user()->role != 'User') {
-        return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+        return redirect()->route('UserDashboard')->with('error', 'You are not authorized to view this page.');
+    }
+    return view('EventDetails', compact('event'));
     }
 
-    return view('EventDetails', compact('event'));
+    public function showEventOrganizer()
+    {
+    $users = User::where('role', 'Event')->get();
+    if (Auth::user()->role != 'User') {
+        return redirect()->route('EventOrganizer')->with('error', 'You are not authorized to view this page.');
+    }
+    return view('EventOrganizer', compact('users'));
+    }
+
+    public function showAllEvent()
+    {
+        $events = Event::with('user')->get();
+    if (Auth::user()->role != 'User') {
+        return redirect()->route('Event')->with('error', 'You are not authorized to view this page.');
+    }
+    return view('Event', compact('events'));
     }
 }

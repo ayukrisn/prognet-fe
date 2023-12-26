@@ -13,13 +13,13 @@
                         <a class="nav-link {{ Request::is('UserDashboard') ? 'active' : '' }}" aria-current="page" href="/UserDashboard">Home</a>
                     </li>
                     <li class="nav-item mx-lg-2">
-                        <a class="nav-link " href="#">Event</a>
+                        <a class="nav-link {{ Request::is('Event') ? 'active' : '' }}" aria-current="page" href="/Event">Event</a>
                     </li>
                     <li class="nav-item mx-lg-2">
                         <a class="nav-link" href="#">Ticket</a>
                     </li>
                     <li class="nav-item mx-lg-2">
-                        <a class="nav-link" href="#">Event Creator</a>
+                        <a class="nav-link {{ Request::is('EventOrganizer') ? 'active' : '' }}" aria-current="page" href="/EventOrganizer">Event Creator</a>
                     </li>
                 </ul>
                 @guest

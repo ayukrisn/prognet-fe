@@ -11,13 +11,13 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard Profile Event -->
-    @if (auth()->user()->role == 'Event')
+    <!-- @if (auth()->user()->role == 'Event')
     <li class="nav-item">
         <a class="nav-link" href="/profileEvent">
             <i class="fa-solid fa-user"></i>
             <span>Profile</span></a>
     </li>
-    @endif
+    @endif -->
     <!-- Nav Item - End Dashboard Profile Event -->
 
     <!-- Nav Item - Dashboard Admin -->

@@ -32,7 +32,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Hello!</h1>
                   </div>
-                  <form action="{{ route('login.action') }}" method="POST" class="user">
+                  <form action="{{ route('login.action') }}" method="POST">
                     @csrf
                     <div class="form-group">
                       <input name="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Please Enter Your Email...">

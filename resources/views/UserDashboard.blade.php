@@ -8,10 +8,10 @@
         <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
             <h1>Festifind</h1>
             <p>Looking for an event? We can help you!</p>
-            <div class="box">
+            <!-- <div class="box">
                 <i class="fa fa-search" aria-hidden="true"></i>
                 <input type="text" name="" placeholder="Start searching for an event" />
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- End Hero Section -->
@@ -51,7 +51,7 @@
         <div class="section-title">
             <div class="label-title d-flex justify-content-between">
                 <h2>Event Pilihan</h2>
-                <p><a class="link" href="#">Lihat Semua Event</a></p>
+                <p><a class="link" href="{{ route('event.all') }}">Lihat Semua Event</a></p>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4 py-3">
@@ -104,7 +104,8 @@
             <div class="label-title d-flex justify-content-between">
                 <h2>Event Organizer</h2>
                 <!-- Add a link to view all organizers if needed -->
-                <p><a class="link" href="#">Lihat Semua Event Organizer</a></p>
+                <p><a class="link" href="{{ route('event.organizer') }}">Lihat Semua Event Organizer</a></p>
+
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-4 g-4 py-3">
