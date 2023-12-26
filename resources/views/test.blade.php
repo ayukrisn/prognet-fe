@@ -2,6 +2,12 @@
 @section('title', 'Prognet | Detail Event')
 @section('contents')
 <!-- Detail Event -->
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
 <section class="detail-event">
     <div class="container">
         <!--Content Top -->
@@ -132,24 +138,9 @@
                                     </div>
                                     <div class="card-footer">
                                         @if ($event->price > 0)
-                                        <form id="buyTicketForm" action="{{ route('beli-tiket', $event->id) }}" method="POST">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label for="quantity">Jumlah Tiket:</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="totalPrice">Total Harga:</label>
-                                                <input type="text" class="form-control" id="totalPrice" name="totalPrice" readonly>
-                                            </div>
-                                                                                <br>
-                                        <div class="d-flex justify-content-between">
-                                            <button type="button" class="btn btn-primary" onclick="calculateTotal()">Hitung Total</button>
-                                            <button type="submit" class="btn btn-success">Beli Tiket</button>
-                                        </div>
-                                        </form>
+                                            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#buyTicketModal">Beli Tiket</a>
                                         @else
-                                        <a href="#" class="btn btn-primary btn-block">Daftar</a>
+                                            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#registerModal">Daftar</a>
                                         @endif
                                     </div>
                                 </div>
@@ -177,6 +168,35 @@
             </div>
         </div>
 </section>
+ <!-- Buy Ticket Modal -->
+<div class="modal fade" id="buyTicketModal" tabindex="-1" role="dialog" aria-labelledby="buyTicketModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="buyTicketModalLabel">Beli Tiket</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="buyTicketForm">
+                    <div class="form-group">
+                        <label for="quantity">Jumlah Tiket:</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Harga:</label>
+                        <input type="text" class="form-control" id="totalPrice" name="totalPrice" readonly>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="calculateTotal()">Hitung Total</button>
+                <button type="button" class="btn btn-success" onclick="purchaseTickets()">Beli Tiket</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     function calculateTotal() {
@@ -191,6 +211,61 @@
 
     // Display total price in the form
     document.getElementById('totalPrice').value = "Rp. " + totalPrice.toLocaleString();
+
+    // Purchase tickets after calculating total
+    purchaseTickets();
 }
+
+
+    function purchaseTickets() {
+        // Mendapatkan path dari URL
+        var path = window.location.pathname;
+
+        // Membagi path berdasarkan tanda '/'
+        var pathSegments = path.split('/');
+
+        // Mendapatkan ID event dari segmen terakhir
+        var eventId = pathSegments.pop();
+
+        // Pastikan eventId adalah bilangan bulat
+        eventId = parseInt(eventId);
+
+        // Cek apakah eventId adalah angka yang valid
+        if (isNaN(eventId) || eventId <= 0) {
+            console.error('Invalid Event ID');
+            return;
+        }
+
+        var quantity = parseInt(document.getElementById('quantity').value);
+
+        // Gantilah 'your-event-id' dengan logika yang sesuai
+        // Menggunakan ID event yang sudah diambil dari URL
+        var url = '/beli-tiket/' + eventId;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            body: JSON.stringify({ quantity: quantity }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message); // Tampilkan pesan sukses atau sesuaikan dengan respons yang diharapkan
+            $('#buyTicketModal').modal('hide'); // Sembunyikan modal setelah pembelian berhasil
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 </script>
+
+
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <!-- Add your register modal content here -->
+</div>
+
 @endsection

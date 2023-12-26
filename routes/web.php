@@ -7,6 +7,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -95,4 +97,6 @@ Route::middleware(['auth', 'role:User'])->group(function () {
     Route::get('/Event', [AuthController::class, 'showAllEvent'])->name('event.all');
 });
 
-
+Route::controller(PaymentController::class)->group(function () {
+    Route::post('/beli-tiket/{eventId}', 'beliTiket')->name('beli-tiket');
+});

@@ -277,6 +277,14 @@ btn-close:focus {
     width: 120px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
 }
+
+.btn-success{
+  border-radius: 50px;
+  font-weight:600px;
+  width: 120px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+}
+
 .btn-primary:hover{
     background-color: black;
     border: none;
