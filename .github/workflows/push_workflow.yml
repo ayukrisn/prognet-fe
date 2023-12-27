@@ -9,6 +9,10 @@ on:
 jobs:
   app-tests:
     runs-on: ubuntu-latest
+
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.2
+
     services:
       mysql:
         image: mysql:5.7
@@ -20,7 +24,8 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -131,7 +136,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: 7.4
+          php-version: 8.2
           extension-csv: mbstring, bcmath
 
       - name: Composer install

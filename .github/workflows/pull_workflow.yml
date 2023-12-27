@@ -1,7 +1,7 @@
-name: PULL WorkFlow
+name: PULL Workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - main
       - staging
@@ -9,6 +9,10 @@ on:
 jobs:
   app-tests:
     runs-on: ubuntu-latest
+
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.2
+
     services:
       mysql:
         image: mysql:5.7
@@ -20,7 +24,8 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -31,10 +36,10 @@ jobs:
       - name: Install NPM Dependencies
         run: npm install
 
-      - name: Generate key
+      - name: Generate Key
         run: php artisan key:generate
 
-      - name: Execute tests (Unit and Feature tests) using PHPUnit
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-        run: ./vendor/bin/phpunit
+        run: vendor/bin/phpunit
