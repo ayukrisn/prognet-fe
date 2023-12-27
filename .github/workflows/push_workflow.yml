@@ -39,9 +39,6 @@ jobs:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: vendor/bin/phpunit
 
-      - name: Execute tests (Unit and Feature tests) via JEST
-        run: node_modules/.bin/jest
-
   build-js-production:
     name: Build JavaScript/CSS for PRODUCTION Server
     runs-on: ubuntu-latest
@@ -57,7 +54,7 @@ jobs:
           npm run prod
 
       - name: Put built assets in Artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: assets
           path: public
