@@ -122,15 +122,6 @@
                                     });
                                 </script>
 
-                                <div class="form-group" id="identityNumberGroup">
-                                <label class="labels">Identity Number</label>
-                                    <input name="identify_number" type="text"
-                                        class="form-control form-control-user @error('identify_number')is-invalid @enderror"
-                                        id="identityNumber" placeholder="Identiy Number" required>
-                                    @error('identify_number')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
                                 <div class="form-group">
                                 <label class="labels">Role</label>
                                     <select name="role" id="role"
@@ -143,7 +134,15 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-
+                                <div class="form-group" id="identityNumberGroup">
+                                    <label class="labels">Identity Number</label>
+                                        <input name="identify_number" type="text"
+                                            class="form-control form-control-user @error('identify_number')is-invalid @enderror"
+                                            id="identityNumber" placeholder="Identity Number">
+                                        @error('identify_number')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                                 <script>
                                     $(document).ready(function() {

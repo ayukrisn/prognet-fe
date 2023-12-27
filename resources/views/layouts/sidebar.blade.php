@@ -39,6 +39,14 @@
       </div>
     </div>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="/payment">
+      <i class="fa-solid fa-money-bill"></i>
+        <span>Payment</span></a>
+  </li>
+
+
     @endif
     <!-- Nav Item - End Dashboard Admin -->
 
@@ -59,6 +67,12 @@
           </div>
         </div>
     </li>
+
+      <li class="nav-item">
+    <a class="nav-link" href="/payment">
+      <i class="fa-solid fa-money-bill"></i>
+        <span>Payment</span></a>
+  </li>
     @endif
 
     <!-- Divider -->

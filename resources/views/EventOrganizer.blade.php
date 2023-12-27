@@ -3,7 +3,7 @@
 @section('contents')
     
 <section class="organizer-section">
-    <div class="container py-5">
+    <div class="container py-5" style="margin-top:100px;">
         <div class="section-title">
             <div class="label-title d-flex justify-content-between">
                 <h2>Event Organizer</h2>

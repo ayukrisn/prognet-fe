@@ -39,7 +39,7 @@
         <li class="nav-item"><a href="/UserDashboard" class="nav-link px-2 {{ Request::is('UserDashboard') ? 'active' : '' }}">Home</a></li>
         <li class="nav-item"><a href="/EventDashboard" class="nav-link px-2 {{ Request::is('Event') ? 'active' : '' }}">Event</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2">Ticket</a></li>
-        <li class="nav-item"><a href="/EventOrganizer" class="nav-link px-2 {{ Request::is('Event') ? 'active' : '' }}" class="nav-link px-2">Event Creator</a></li>
+        <li class="nav-item"><a href="/EventOrganizer" class="nav-link px-2 {{ Request::is('EventOrganizer') ? 'active' : '' }}" class="nav-link px-2">Event Creator</a></li>
       </ul>
     </footer>
   </div>
@@ -57,6 +57,16 @@
 
 <!-- JS -->
 <script src="{{ asset('admin_assets/js/scripts.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ asset('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatables').DataTable();
+    });
+</script>
 </body>
 
 </html>

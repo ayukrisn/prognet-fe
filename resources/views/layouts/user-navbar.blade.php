@@ -16,10 +16,10 @@
                         <a class="nav-link {{ Request::is('Event') ? 'active' : '' }}" aria-current="page" href="/Event">Event</a>
                     </li>
                     <li class="nav-item mx-lg-2">
-                        <a class="nav-link" href="#">Ticket</a>
+                        <a class="nav-link {{ Request::is('payment') ? 'active' : '' }}" href="/payment" aria-current="page">Payment</a>
                     </li>
                     <li class="nav-item mx-lg-2">
-                        <a class="nav-link {{ Request::is('EventOrganizer') ? 'active' : '' }}" aria-current="page" href="/EventOrganizer">Event Creator</a>
+                        <a class="nav-link {{ Request::is('EventOrganizer') ? 'active' : '' }}" aria-current="page" href="/EventOrganizer">Event Organizer</a>
                     </li>
                 </ul>
                 @guest

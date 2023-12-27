@@ -2,6 +2,17 @@
 @section('title', 'Prognet | Home')
 @section('contents')
 
+<!-- Hero Section -->
+<section class="hero-section"
+style="background: url({{ asset('storage/foto/festival.jpg') }}) no-repeat center;
+        background-size: cover; width: 100%; height: 100vh;">
+    <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
+        <h1>Event dan Festival</h1>
+        <p>Jelajahi Event dan Festival Favoritmu di Festifind!</p>
+    </div>
+</section>
+<!-- End Hero Section -->
+
 <!-- Event Section 1 -->
 <section class="event-section">
     <div class="container py-5">

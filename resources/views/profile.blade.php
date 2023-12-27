@@ -65,11 +65,6 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <label class="labels">Identify Number</label>
-                                <input type="text" name="identify_number" class="form-control"
-                                    placeholder="Identify Number" value="{{ auth()->user()->identify_number }}">
-                            </div>
                         </div>
                         @if ($errors->any())
                 <div class="alert alert-danger">

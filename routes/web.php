@@ -74,6 +74,14 @@ Route::prefix('kategori')->group(function () {
 });
 
 
+Route::prefix('payment')->group(function () {
+    Route::get('', [PaymentController::class, 'index'])->name('payment.index');
+    Route::get('', [PaymentController::class, 'index'])->name('payment.user-payment');
+});
+
+Route::controller(PaymentController::class)->group(function () {
+    Route::post('/beli-tiket/{eventId}', 'beliTiket')->name('beli-tiket');
+});
 
 Route::controller(FestivalController::class)->prefix('festivals')->group(function () {
     Route::get('', 'index')->name('festivals');
@@ -101,9 +109,6 @@ Route::middleware(['auth', 'role:User'])->group(function () {
     Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
 });
 
-Route::controller(PaymentController::class)->group(function () {
-    Route::post('/beli-tiket/{eventId}', 'beliTiket')->name('beli-tiket');
-});
 
 Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
 Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
